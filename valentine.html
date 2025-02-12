@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+        }
+        h1 {
+            color: red;
+            font-size: 1.5em;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            margin: auto;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: gray;
+            color: white;
+            position: relative;
+        }
+        .no:hover {
+            position: absolute;
+            left: calc(10% + (80% * Math.random()));
+            top: calc(10% + (80% * Math.random()));
+        }
+        .gif-container {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-600px); opacity: 0; }
+        }
+        @media (min-width: 600px) {
+            .buttons {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine? 💕</h1>
+        <div class="buttons">
+            <button class="yes" onclick="celebrate()">Yes</button>
+            <button class="no">No</button>
+        </div>
+    </div>
+    
+    <script>
+        function createGif(src) {
+            let img = document.createElement('img');
+            img.src = src;
+            img.className = 'gif-container';
+            img.style.left = Math.random() * 100 + 'vw';
+            img.style.bottom = '0px';
+            document.body.appendChild(img);
+            setTimeout(() => img.remove(), 4000);
+        }
+
+        function celebrate() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => createGif('flower1.gif'), i * 300); 
+                setTimeout(() => createGif('flower2.png'), i * 300); 
+                setTimeout(() => createGif('flower1.gif'), i * 300); 
+                setTimeout(() => createGif('emoji.png'), i * 300); 
+                setTimeout(() => createGif('balloon.png'), i * 300); 
+
+            }
+            alert('I Loveeee Youuu Putott💖');
+        }
+    </script>
+</body>
+</html>
